@@ -1,0 +1,19 @@
+{
+  "name": "sylvain.win",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel src/index.html"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "color": "^3.0.0",
+    "jss": "^9.8.0",
+    "jss-preset-default": "^4.3.0",
+    "parcel-bundler": "^1.6.2",
+    "postcss-modules": "^1.1.0"
+  }
+}
