@@ -1,0 +1,12 @@
+.graph {
+  margin: 1ch 0 2ch;
+}
+
+.graphRow span:first-child,
+.graphRow span:last-child {
+  color: #555;
+}
+
+.graphRow span:nth-child(2) {
+  font-weight: 700;
+}

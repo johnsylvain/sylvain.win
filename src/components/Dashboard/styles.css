@@ -1,0 +1,16 @@
+.bold {
+  font-weight: 700;
+}
+
+.p {
+  margin-bottom: 1ch;
+}
+
+.footer a {
+  color: #e77f67;
+}
+
+.footer {
+  font-size: 0.8rem;
+  margin-top: 1rem;
+}

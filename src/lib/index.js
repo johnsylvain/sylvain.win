@@ -1,11 +1,10 @@
-import { h, h as createElement } from './h'
+import { h } from './h'
 import { render } from './render'
 import { extend } from './utils'
 import { Component } from './component'
 
 export {
   h,
-  createElement,
   render,
   extend,
   Component
@@ -13,7 +12,6 @@ export {
 
 export default {
   h,
-  createElement,
   render,
   extend,
   Component

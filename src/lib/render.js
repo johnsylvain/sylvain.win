@@ -13,7 +13,13 @@ function createElement (vnode) {
     : document.createElement(vnode.nodeName)
 
   if (vnode.attributes) {
-    setAttributes(node, vnode.attributes)
+    for (let name in vnode.attributes)
+      node.setAttribute(
+        name === 'className'
+          ? 'class'
+          : name,
+        vnode.attributes[name]
+      )
 
     vnode.children
       .map(createElement)
@@ -21,19 +27,4 @@ function createElement (vnode) {
   }
   
   return node
-}
-
-function setAttributes (node, attributes) {
-  for (let name in attributes) {
-    if (/^on/.test(name)) {
-      node.addEventListener(
-        name.slice(2).toLowerCase(), attributes[name]
-      )
-    } else {
-      if (name === 'className')
-        node.setAttribute('class', attributes[name])
-      else
-        node.setAttribute(name, attributes[name])
-    }
-  }
 }

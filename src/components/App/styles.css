@@ -1,0 +1,21 @@
+.title {
+  font-weight: 700;
+  font-size: 1.625rem;
+  margin-bottom: 1rem;
+}
+
+.section {
+  margin: 30px auto;
+  max-width: 600px;
+  color: #000;
+  box-sizing: 'border-box';
+  line-height: 140%;
+  border: 2px solid #000;
+  padding: 30px;
+  box-shadow: 5px 5px 0 #000;
+  background: white;
+}
+
+.section * {
+  font-family: 'Inconsolata';
+}
