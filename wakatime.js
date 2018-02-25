@@ -1,7 +1,7 @@
 const fetch = require('isomorphic-fetch')
 
 function convert (seconds)  {
-  var hour, minute, seconds;
+  var hour, minute;
 
   minute = Math.floor(seconds / 60)
   seconds = seconds % 60
@@ -16,7 +16,7 @@ function convert (seconds)  {
 }
 
 const getTime = new Promise((resolve, reject) => {
-  fetch(process.env.TIME_URL)
+  fetch('https://wakatime.com/share/@johnsylvain/75912b47-4ab5-46ce-babd-b1883a7e211b.json')
     .then(res => res.json())
     .then(json => {
         const seconds = json.data.reduce((acc, cur) => acc + cur.grand_total.total_seconds, 0)
@@ -25,7 +25,7 @@ const getTime = new Promise((resolve, reject) => {
 })
 
 const getLanguages = new Promise((resolve, reject) => {
-  fetch(process.env.LANG_URL)
+  fetch('https://wakatime.com/share/@johnsylvain/69c54bff-19e2-41a4-970d-5da9e24427d6.json')
     .then(res => res.json())
     .then(json => {
         return resolve(json.data.filter(i => i.name !== 'Other').splice(0, 3))
