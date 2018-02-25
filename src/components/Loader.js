@@ -18,7 +18,7 @@ const { classes } = jss
 
 const Loader = () => 
   <div className={classes.loader}>
-    <h1>Loading...</h1>
+    <h1>Crunching numbers...</h1>
   </div>
 
 export default Loader

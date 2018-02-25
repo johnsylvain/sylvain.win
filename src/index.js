@@ -6,6 +6,7 @@ import {
 } from './lib'
 import Dashboard from './components/Dashboard'
 import Loader from './components/Loader'
+
 import jss from 'jss'
 import preset from 'jss-preset-default'
 import color from 'color'
@@ -19,13 +20,17 @@ const styles = {
     marginBottom: '1rem' 
   },
 
-  app: {
+  section: {
     fontFamily: 'Inconsolata',
     margin: '30px auto',
     maxWidth: 600,
+    transition: 'color 1s, box-shadow 1s',
     color: '#596275',
     boxSizing: 'border-box',
-    lineHeight: '140%'
+    lineHeight: '140%',
+    border: '2px solid #596275',
+    padding: 30,
+    boxShadow: '5px 5px 0 #596275'
   }
 }
 
@@ -40,7 +45,7 @@ function App () {
 }
 
 extend(App.prototype, 
-  Object.create(Component.prototype),
+  Object.create(Component.prototype), // App extends Component
   {
     initialize () {
       this.render()
@@ -51,18 +56,16 @@ extend(App.prototype,
       fetch(`https://wt-5f92353bfdf241b0b97a7b3a6d3547a4-0.run.webtask.io/wakatime`)
         .then(res => res.json())
         .then(json => {
-          this.setState({
-            stats: json
-          })
+          this.setState({ stats: json })
         })
     },
 
     render () {
       render(
-        <div className={classes.app}>
+        <div className={classes.section}>
           <h1 className={classes.title}>sylvain.win</h1>
           {!!this.state.stats
-            ? <Dashboard stats={this.state.stats} />
+            ? <Dashboard stats={this.state.stats}/>
             : <Loader />
           }
         </div>,
