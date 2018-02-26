@@ -7,10 +7,12 @@
 }
 
 .footer a {
-  color: #e77f67;
+  color: #D36763;
+  font-weight: bold;
 }
 
 .footer {
+  margin-top: 2ch;
+  color: #555;
   font-size: 0.8rem;
-  margin-top: 1rem;
 }

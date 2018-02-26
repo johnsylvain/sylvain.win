@@ -29,7 +29,7 @@ const Dashboard = (
       <Graph rows={graph.map(row => ({
         label: row.date,
         detail: row.time,
-        value: (row.value / maxTimeLength) * 50
+        value: (row.value / maxTimeLength) * 40
       }))}/>
       <p className={style.p}>Top languages:</p>
       <Graph rows={languages.map(row => ({
