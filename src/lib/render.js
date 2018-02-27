@@ -1,10 +1,17 @@
+const UPDATE = 'UPDATE'
+const REPLACE = 'REPLACE'
+const REMOVE = 'REMOVE'
+const CREATE = 'CREATE'
+const SET_ATTRIBUTE = 'SET_ATTRIBUTE'
+const REMOVE_ATTRIBUTE = 'REMOVE_ATTRIBUTE'
+
 export function render (parent, newNode, oldNode) {
   const patches = diff(newNode, oldNode)
   patch(parent, patches)
 }
 
 function createElement (vnode) {
-  let node = typeof vnode === "string" || typeof vnode === "number"
+  let node = typeof vnode === 'string' || typeof vnode === 'number'
     ? document.createTextNode(vnode)
     : document.createElement(vnode.nodeName)
 
@@ -75,10 +82,10 @@ function diffAttributes (newNode, oldNode) {
     const oldVal = oldNode.attributes[name]
 
     if (!newVal)
-      patches.push({ type: 'REMOVE_ATTRIBUTE', name, value: oldVal })
+      patches.push({ type: REMOVE_ATTRIBUTE, name, value: oldVal })
 
     else if (!oldVal || oldVal !== newVal)
-      patches.push({ type: 'SET_ATTRIBUTE', name, value: newVal })
+      patches.push({ type: SET_ATTRIBUTE, name, value: newVal })
 
   })
 
@@ -87,17 +94,17 @@ function diffAttributes (newNode, oldNode) {
 
 function diff (newNode, oldNode) {
   if (!oldNode)
-    return { type: 'CREATE', newNode }
+    return { type: CREATE, newNode }
 
   if (!newNode)
-    return { type: 'REMOVE' }
+    return { type: REMOVE }
 
   if (changed(newNode, oldNode))
-    return { type: 'REPLACE', newNode }
+    return { type: REPLACE, newNode }
 
   if (newNode.nodeName)
     return {
-      type: 'UPDATE',
+      type: UPDATE,
       children: diffChildren(newNode, oldNode),
       attributes: diffAttributes(newNode, oldNode)
     }
@@ -108,10 +115,10 @@ function patchAttributes (parent, patches) {
     const attribute = patches[i]
     const { type, name, value } = attribute
 
-    if (type === 'SET_ATTRIBUTE')
+    if (type === SET_ATTRIBUTE)
       setAttribute(parent, name, value)
 
-    else if (type === 'REMOVE_ATTRIBUTE')
+    else if (type === REMOVE_ATTRIBUTE)
       removeAttribute(parent, name, value)
   }
 }
@@ -122,19 +129,19 @@ function patch (parent, patches, index = 0) {
   const el = parent.childNodes[index]
 
   switch(patches.type) {
-    case 'CREATE': {
+    case CREATE: {
       const { newNode } = patches
       const newElement = createElement(newNode)
       return parent.appendChild(newElement)
     }
-    case 'REMOVE':
+    case REMOVE:
       return parent.removeChild(el)
-    case 'REPLACE': {
+    case REPLACE: {
       const { newNode } = patches
       const newElement = createElement(newNode)
       return parent.replaceChild(newElement, el)
     }
-    case 'UPDATE': {
+    case UPDATE: {
       const { children, attributes } = patches
 
       patchAttributes(el, attributes)
