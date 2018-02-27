@@ -1,18 +1,12 @@
 import { h } from './h'
-import { render } from './render'
-import { extend } from './utils'
-import { Component } from './component'
+import { app } from './app'
 
 export {
   h,
-  render,
-  extend,
-  Component
+  app
 }
 
 export default {
   h,
-  render,
-  extend,
-  Component
+  app
 }

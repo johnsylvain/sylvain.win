@@ -13,6 +13,9 @@ function createElement (vnode) {
     : document.createElement(vnode.nodeName)
 
   if (vnode.attributes) {
+    if (vnode.attributes.oncreate)
+      vnode.attributes.oncreate(node)
+
     for (let name in vnode.attributes)
       node.setAttribute(
         name === 'className'
@@ -25,6 +28,6 @@ function createElement (vnode) {
       .map(createElement)
       .forEach(node.appendChild.bind(node))
   }
-  
+
   return node
 }
