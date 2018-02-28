@@ -3,16 +3,21 @@ export function createElement (vnode) {
     ? document.createTextNode(vnode)
     : document.createElement(vnode.nodeName)
 
-  if (vnode.attributes) {
-    if (vnode.attributes.oncreate)
-      vnode.attributes.oncreate(node)
+  if (!vnode.attributes) return node
 
-    setAttributes(node, vnode.attributes)
+  if (vnode.attributes.oncreate)
+    vnode.attributes.oncreate(node)
 
-    vnode.children
-      .map(createElement)
-      .forEach(node.appendChild.bind(node))
+  for (let name in vnode.attributes) {
+    if (/^on/.test(name))
+      setEventListener(node, name, vnode.attributes[name])
+    else
+      setAttribute(node, name, vnode.attributes[name])
   }
+
+  vnode.children
+    .map(createElement)
+    .forEach(node.appendChild.bind(node))
 
   return node
 }
@@ -29,15 +34,6 @@ export function removeAttribute (node, name, value) {
     node.remove('class')
   else
     node.removeAttribute(name)
-}
-
-function setAttributes (node, attributes) {
-  for (let name in attributes) {
-    if (/^on/.test(name))
-      setEventListener(node, name, attributes[name])
-    else
-      setAttribute(node, name, attributes[name])
-  }
 }
 
 function setEventListener (node, name, value) {

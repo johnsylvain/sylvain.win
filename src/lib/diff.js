@@ -24,8 +24,8 @@ function diffChildren (newNode, oldNode) {
 
 function diffAttributes (newNode, oldNode) {
   const patches = []
-
   const attributes = Object.assign({}, newNode.attributes, oldNode.attributes)
+
   Object.keys(attributes).forEach(name => {
     const newVal = newNode.attributes[name]
     const oldVal = oldNode.attributes[name]

@@ -1,12 +1,13 @@
 import { render } from './render'
 
-export function app (state, actions, view, parent) {
+export function app (options) {
+  let { state, actions, view, target } = options
   let globalState = Object.assign({}, state)
-  let wiredActions = Object.assign({}, actions)
+  let mappedActions = Object.assign({}, actions)
   let vdom = null
 
   scheduleRender(
-    mapStateToActions(globalState, wiredActions)
+    mapStateToActions(globalState, mappedActions)
   )
 
   function mapStateToActions (state, actions) {
@@ -29,9 +30,9 @@ export function app (state, actions, view, parent) {
   }
 
   function scheduleRender () {
-    let next = view(globalState, wiredActions)
+    let next = view(globalState, mappedActions)
     setTimeout(
-      render.bind(undefined, parent, next, vdom)
+      render.bind(undefined, target, next, vdom)
     )
     vdom = next
   }
