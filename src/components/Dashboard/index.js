@@ -8,7 +8,8 @@ const Dashboard = (
     stats: {
       time: { hour, minute },
       languages,
-      graph
+      graph,
+      editors
     }
   }
 ) => {
@@ -31,12 +32,14 @@ const Dashboard = (
         detail: row.time,
         value: (row.value / maxTimeLength) * 40
       }))}/>
+
       <p className={style.p}>Top languages:</p>
       <Graph rows={languages.map(row => ({
         label: row.name.padEnd(maxLanguageLength),
         detail: row.percent.toFixed(2) + '%',
         value: row.percent / 2
       }))}/>
+
       <p className={style.footer}>
         Powered by <a href="https://wakatime.com"  className={style.footer}>wakatime.com</a>
       </p>

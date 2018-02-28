@@ -6,10 +6,10 @@ export function app (state, actions, view, parent) {
   let vdom = null
 
   scheduleRender(
-    wireStateToActions(globalState, wiredActions)
+    mapStateToActions(globalState, wiredActions)
   )
 
-  function wireStateToActions (state, actions) {
+  function mapStateToActions (state, actions) {
     for (let key in actions) {
       (function (key, action) {
         actions[key] = function (data) {
