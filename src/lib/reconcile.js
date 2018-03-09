@@ -1,4 +1,5 @@
 import { createElement } from './create-element'
+import { extend } from './util'
 
 let vdom = null
 
@@ -38,9 +39,8 @@ function idiff (parent, newNode, oldNode, index = 0) {
 }
 
 function createVDOM (vnode) {
-  const newVNode = Object.assign(
-    {},
-    vnode,
+  const newVNode = extend(
+    extend({}, vnode),
     {
       children: (vnode.children || [])
         .map((child) =>
@@ -51,15 +51,12 @@ function createVDOM (vnode) {
     }
   )
 
-  if (typeof vnode.nodeName === 'function') {
-    const subtree = vnode.nodeName(vnode.attributes, vnode.children)
-    return createVDOM(subtree)
-  } else {
-    return newVNode
-  }
+  return (typeof vnode.nodeName === 'function')
+    ? createVDOM(vnode.nodeName(vnode.attributes, vnode.children))
+    : newVNode
 }
 
-function changed(node1, node2) {
+function changed (node1, node2) {
   return typeof node1 !== typeof node2 ||
     typeof node1 === 'string' && node1 !== node2 ||
     node1.type !== node2.type
