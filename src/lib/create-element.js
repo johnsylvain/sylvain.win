@@ -1,10 +1,12 @@
+import { noop } from './util'
+
 export function createElement (vnode) {
   let node = typeof vnode === 'string' || typeof vnode === 'number'
     ? document.createTextNode(vnode)
     : document.createElement(vnode.nodeName)
 
   if (vnode.attributes) {
-    (vnode.attributes.oncreate || new Function)(node)
+    (vnode.attributes.oncreate || noop)(node)
 
     for (let name in vnode.attributes) {
       if (/^on/.test(name)) {
