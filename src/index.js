@@ -1,4 +1,4 @@
-import { h, app } from './lib'
+import { h, app, cloneElement } from './lib'
 import App from './components/App'
 
 app({

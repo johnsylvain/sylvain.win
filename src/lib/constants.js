@@ -1,6 +1,0 @@
-export const UPDATE = 'UPDATE'
-export const REPLACE = 'REPLACE'
-export const REMOVE = 'REMOVE'
-export const CREATE = 'CREATE'
-export const SET_ATTRIBUTE = 'SET_ATTRIBUTE'
-export const REMOVE_ATTRIBUTE = 'REMOVE_ATTRIBUTE'

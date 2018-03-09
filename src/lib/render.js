@@ -1,7 +1,5 @@
-import { diff } from './diff'
-import { patch } from './patch'
+import { diff } from './reconcile'
 
 export function render (parent, newNode, oldNode) {
-  const patches = diff(newNode, oldNode)
-  patch(parent, patches)
+  diff(parent, newNode, oldNode)
 }

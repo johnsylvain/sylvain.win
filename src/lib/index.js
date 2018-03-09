@@ -1,12 +1,15 @@
 import { h } from './h'
 import { app } from './app'
+import { cloneElement } from './clone-element'
 
 export {
   h,
-  app
+  app,
+  cloneElement
 }
 
 export default {
   h,
-  app
+  app,
+  cloneElement
 }
