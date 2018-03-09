@@ -4,7 +4,6 @@ export function app (options) {
   let { state, actions, view, target } = options
   let globalState = Object.assign({}, state)
   let mappedActions = Object.assign({}, actions)
-  let vdom = null
 
   scheduleRender(
     mapStateToActions(globalState, mappedActions)
@@ -32,8 +31,7 @@ export function app (options) {
   function scheduleRender () {
     let next = view(globalState, mappedActions)
     setTimeout(
-      render.bind(undefined, target, next, vdom)
+      render.bind(undefined, target, next)
     )
-    vdom = next
   }
 }

@@ -3,21 +3,19 @@ export function createElement (vnode) {
     ? document.createTextNode(vnode)
     : document.createElement(vnode.nodeName)
 
-  if (!vnode.attributes) return node
+  if (vnode.attributes) {
+    (vnode.attributes.oncreate || new Function)(node)
 
-  if (vnode.attributes.oncreate)
-    vnode.attributes.oncreate(node)
+    for (let name in vnode.attributes) {
+      if (/^on/.test(name))
+        setEventListener(node, name, vnode.attributes[name])
+      else
+        setAttribute(node, name, vnode.attributes[name])
+    }
 
-  for (let name in vnode.attributes) {
-    if (/^on/.test(name))
-      setEventListener(node, name, vnode.attributes[name])
-    else
-      setAttribute(node, name, vnode.attributes[name])
+    for (let i = 0; i < vnode.children.length; i++)
+      node.appendChild(createElement(vnode.children[i]))
   }
-
-  vnode.children
-    .map(createElement)
-    .forEach(node.appendChild.bind(node))
 
   return node
 }

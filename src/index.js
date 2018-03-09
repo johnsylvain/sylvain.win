@@ -1,4 +1,5 @@
 import { h, app } from './lib'
+import { Router } from './lib/router'
 import App from './components/App'
 
 app({
@@ -21,7 +22,9 @@ app({
 
   view: (state, actions) => (
     <div oncreate={actions.fetchData}>
-      <App stats={state.stats}/>
+      <Router>
+        <App stats={state.stats}/>
+      </Router>
     </div>
   )
 })
