@@ -1,0 +1,17 @@
+.todo {
+  cursor: pointer;
+}
+
+.todo:before {
+  counter-increment: index;
+  content: counter(index) ". ";
+}
+
+.todo:not(:last-of-type) {
+  border-bottom: 1px solid rgb(218, 225, 233);
+}
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.7;
+}

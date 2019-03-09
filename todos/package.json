@@ -1,0 +1,20 @@
+{
+  "name": "kobra-example-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "parcel-bundler": "^1.10.3",
+    "postcss-modules": "^1.4.1"
+  },
+  "dependencies": {
+    "autoprefixer": "^9.3.1",
+    "kobra": "../kobra/kobra-0.1.1.tgz"
+  },
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parce build src/index.html"
+  }
+}

@@ -1,0 +1,29 @@
+.form input {
+  width: 100%;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 20px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+}
+
+.form input:focus {
+  outline: 0;
+  border: 0;
+}
+
+.list {
+  counter-reset: index;
+}
+
+.list li {
+  padding: 20px;
+  list-style: none;
+}
+
+.completedMessage {
+  padding: 20px;
+  text-align: center;
+  color: rgb(78, 92, 110, 0.9);
+}
