@@ -10,6 +10,11 @@ const sites = [
     url: 'https://stats.sylvain.win',
     name: 'stats',
     description: 'live coding stats'
+  },
+  {
+    url: 'https://todos.sylvain.win',
+    name: 'todos',
+    description: 'kobra todo app'
   }
 ]
 
