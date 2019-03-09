@@ -1,5 +1,5 @@
-import { h } from "kobra";
-import style from "./style.css";
+import { h } from 'kobra';
+import style from './style.css';
 
 export const Page = (props, children) => (
   <div className={style.container}>

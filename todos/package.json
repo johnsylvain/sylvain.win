@@ -1,17 +1,22 @@
 {
-  "name": "kobra-example-app",
+  "name": "kobra-todos",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.1.2",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "autoprefixer": "^9.3.1",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.15.1",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-prettier": "^3.0.1",
     "parcel-bundler": "^1.10.3",
-    "postcss-modules": "^1.4.1"
+    "postcss-modules": "^1.4.1",
+    "prettier": "^1.16.4"
   },
   "dependencies": {
-    "autoprefixer": "^9.3.1",
-    "kobra": "../kobra/kobra-0.1.1.tgz"
+    "kobra": "~0.1.1"
   },
   "scripts": {
     "start": "parcel src/index.html",

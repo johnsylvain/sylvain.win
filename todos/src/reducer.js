@@ -1,10 +1,10 @@
-import { Todo } from "./models/todo";
+import { Todo } from './models/todo';
 
 export default (state = { todos: [] }, action) => {
   switch (action.type) {
-    case "ADD_TODO":
+    case 'ADD_TODO':
       return { ...state, todos: state.todos.concat(new Todo(action.payload)) };
-    case "TOGGLE_TODO": {
+    case 'TOGGLE_TODO': {
       const id = action.payload;
       return {
         ...state,
@@ -15,7 +15,7 @@ export default (state = { todos: [] }, action) => {
         ]
       };
     }
-    case "REMOVE_TODO": {
+    case 'REMOVE_TODO': {
       const id = action.payload;
       return {
         ...state,
@@ -25,4 +25,4 @@ export default (state = { todos: [] }, action) => {
     default:
       return state;
   }
-}
+};

@@ -1,14 +1,13 @@
-import { h } from "kobra";
-import style from "./style.css";
-
-import { Todo } from "../todo";
+import { h } from 'kobra';
+import { Todo } from '../todo';
+import style from './style.css';
 
 export const TodoForm = props => {
   const handleFormSubmit = event => {
     event.preventDefault();
-    if (event.target.todo.value !== "") {
+    if (event.target.todo.value !== '') {
       props.onAddTodo(event.target.todo.value.trim());
-      event.target.todo.value = "";
+      event.target.todo.value = '';
     }
   };
 
@@ -35,8 +34,8 @@ export const TodoForm = props => {
           ))}
         </ul>
       ) : (
-          <div className={style.completedMessage}>You're done! 🎉</div>
-        )}
+        <div className={style.completedMessage}>You're done! 🎉</div>
+      )}
     </div>
   );
 };
