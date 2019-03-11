@@ -1,6 +1,11 @@
 import { Todo } from './models/todo';
+import { loadState } from './local-storage';
 
-export default (state = { todos: [] }, action) => {
+const todos = (loadState('kobra.todos') || []).map(
+  ({ text, completed }) => new Todo(text, completed)
+);
+
+export default (state = { todos }, action) => {
   switch (action.type) {
     case 'ADD_TODO':
       return { ...state, todos: state.todos.concat(new Todo(action.payload)) };
