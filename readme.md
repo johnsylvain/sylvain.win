@@ -5,5 +5,6 @@
 
 ## Contents
 - __[sylvain.win](https://sylvain.win):__ index of sylvain.win
+- __[music.sylvain.win](https://music.sylvain.win):__ music production site
 - __[stats.sylvain.win](https://stats.sylvain.win):__ displays my coding stats with a custom ui library
 - __[todos.sylvain.win](https://todos.sylvain.win):__ todo app built with [kobra](https://github.com/johnsylvain/kobra)
