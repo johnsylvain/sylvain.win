@@ -7,6 +7,11 @@ const sites = [
     description: 'index of sylvain.win'
   },
   {
+    url: 'https://music.sylvain.win',
+    name: 'music',
+    description: 'music production site'
+  },
+  {
     url: 'https://stats.sylvain.win',
     name: 'stats',
     description: 'live coding stats'
