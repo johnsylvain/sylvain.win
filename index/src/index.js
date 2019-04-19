@@ -9,7 +9,7 @@ const sites = [
   {
     url: 'https://music.sylvain.win',
     name: 'music',
-    description: 'music production site'
+    description: 'music stats'
   },
   {
     url: 'https://stats.sylvain.win',
