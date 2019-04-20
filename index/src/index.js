@@ -1,31 +1,32 @@
-import { h, render } from './dom'
+import { h, render } from "./dom";
 
 const sites = [
   {
-    url: 'https://sylvain.win',
-    name: 'index',
-    description: 'index of sylvain.win'
+    url: "https://sylvain.win",
+    name: "index",
+    description: "index of sylvain.win"
   },
   {
-    url: 'https://music.sylvain.win',
-    name: 'music',
-    description: 'music stats'
+    url: "https://music.sylvain.win",
+    name: "music",
+    description: "music stats"
   },
   {
-    url: 'https://stats.sylvain.win',
-    name: 'stats',
-    description: 'live coding stats'
+    url: "https://stats.sylvain.win",
+    name: "stats",
+    description: "live coding stats"
   },
   {
-    url: 'https://todos.sylvain.win',
-    name: 'todos',
-    description: 'kobra todo app'
+    url: "https://todos.sylvain.win",
+    name: "todos",
+    description: "kobra todo app"
   }
-]
+];
 
 const ListItem = ({ site }) => (
   <li>
-    <strong>{site.name}</strong> - [<a href={site.url}>{site.url}</a>] - {site.description}
+    <strong>{site.name}</strong> - [<a href={site.url}>{site.url}</a>] -{" "}
+    {site.description}
   </li>
 );
 
@@ -39,15 +40,12 @@ class App {
   render() {
     return (
       <ul>
-        {this.props.sites.map(site =>
-          <ListItem site={site}></ListItem>
-        )}
+        {this.props.sites.map(site => (
+          <ListItem site={site} />
+        ))}
       </ul>
     );
   }
 }
 
-render(
-  <App sites={sites} />,
-  document.querySelector('#app')
-);
+render(<App sites={sites} />, document.querySelector("#app"));

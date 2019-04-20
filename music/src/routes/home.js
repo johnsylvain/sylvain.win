@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     fontWeight: 700,
     cursor: 'pointer'
   }
-})
+});
 
 export default (state, dispatch) => (
   <div
@@ -47,11 +47,18 @@ export default (state, dispatch) => (
     className={css(styles.container)}
   >
     <h1 className={css(styles.title)}>What I've been listening to this week</h1>
-    {state.albums.length
-      ? <div className={css(styles.albums)}>{state.albums.map((album, index) => <Album album={album} index={index} />)}</div>
-      : <Placeholder />}
+    {state.albums.length ? (
+      <div className={css(styles.albums)}>
+        {state.albums.map((album, index) => (
+          <Album album={album} index={index} />
+        ))}
+      </div>
+    ) : (
+      <Placeholder />
+    )}
     <p className={css(styles.footer)}>
-      powered by <a
+      powered by{' '}
+      <a
         href="https://www.last.fm/user/johnsylvain"
         target="_blank"
         className={css(styles.link)}

@@ -10,7 +10,7 @@ const fadeUp = {
     opacity: 1,
     transform: 'translateY(0px) scale(1)'
   }
-}
+};
 
 const fade = {
   from: {
@@ -21,7 +21,7 @@ const fade = {
     opacity: 1,
     transform: 'none'
   }
-}
+};
 
 const styles = StyleSheet.create({
   image: {
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     height: 100,
     backgroundSize: 'cover',
     cursor: 'pointer',
-    boxShadow: '0px 3px 8px rgba(0, 0, 0, 0.1)',
+    boxShadow: '0px 3px 8px rgba(0, 0, 0, 0.1)'
   },
 
   albumFeatured: {
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
 
     '@media (max-width: 768px)': {
       marginBottom: 25,
-      gridColumn: '1 / span 3',
+      gridColumn: '1 / span 3'
     }
   },
 
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     animationFillMode: 'forwards',
 
     '@media (max-width: 768px)': {
-      marginBottom: 15,
+      marginBottom: 15
     }
   },
 
@@ -63,13 +63,13 @@ const styles = StyleSheet.create({
     fontSize: '1.4rem',
     fontWeight: 700,
     display: 'block',
-    marginLeft: 20,
+    marginLeft: 20
   },
 
   featuredSubtitle: {
     fontSize: '1.2rem',
     display: 'block',
-    marginLeft: 20,
+    marginLeft: 20
   }
 });
 
@@ -93,6 +93,6 @@ export const Album = ({ album, index }) => {
           <p className={css(styles.featuredSubtitle)}>by {album.artist}</p>
         </div>
       )}
-    </div >
-  )
-}
+    </div>
+  );
+};

@@ -9,7 +9,7 @@ const pulse = {
   to: {
     opacity: 1
   }
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
       marginBottom: 13
     }
   }
-})
+});
 
 export const Placeholder = () => (
   <div className={css(styles.container)}>
@@ -50,4 +50,4 @@ export const Placeholder = () => (
       <div className={css(styles.text)} />
     </div>
   </div>
-)
+);

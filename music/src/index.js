@@ -1,4 +1,4 @@
-import { Kobra, h } from 'kobra';
+import { Kobra } from 'kobra';
 import home from './routes/home';
 
 const app = new Kobra();
@@ -10,8 +10,8 @@ app.use((state = { albums: [] }, action) => {
     default:
       return state;
   }
-})
+});
 
-app.route('/', home)
+app.route('/', home);
 
-app.mount(document.querySelector('#app'))
+app.mount(document.querySelector('#app'));
