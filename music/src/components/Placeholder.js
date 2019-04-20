@@ -3,7 +3,7 @@ import { StyleSheet, css } from 'aphrodite';
 
 const pulse = {
   from: {
-    opacity: 0.4
+    opacity: 0.3
   },
 
   to: {

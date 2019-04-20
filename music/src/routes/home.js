@@ -3,13 +3,9 @@ import { StyleSheet, css } from 'aphrodite';
 import { fetchAlbums } from '../actions';
 import { Album } from '../components/Album';
 import { Placeholder } from '../components/Placeholder';
+import { Page } from '../components/Page';
 
 const styles = StyleSheet.create({
-  container: {
-    maxWidth: 700,
-    margin: '100px auto'
-  },
-
   albums: {
     display: 'grid',
     gridGap: 20,
@@ -41,30 +37,43 @@ const styles = StyleSheet.create({
   }
 });
 
-export default (state, dispatch) => (
-  <div
-    hook={{ mount: () => fetchAlbums(dispatch) }}
-    className={css(styles.container)}
-  >
-    <h1 className={css(styles.title)}>What I've been listening to this week</h1>
-    {state.albums.length ? (
-      <div className={css(styles.albums)}>
-        {state.albums.map((album, index) => (
-          <Album album={album} index={index} />
-        ))}
-      </div>
-    ) : (
-      <Placeholder />
-    )}
-    <p className={css(styles.footer)}>
-      powered by{' '}
-      <a
-        href="https://www.last.fm/user/johnsylvain"
-        target="_blank"
-        className={css(styles.link)}
+export default (state, dispatch) => {
+  document.title = 'Home - John Sylvain';
+
+  return (
+    <Page>
+      <div
+        hook={{
+          mount() {
+            if (!state.albums.length) {
+              fetchAlbums(dispatch);
+            }
+          }
+        }}
       >
-        last.fm
-      </a>
-    </p>
-  </div>
-);
+        <h2 className={css(styles.title)}>
+          What I've been listening to this week
+        </h2>
+        {state.albums.length ? (
+          <div className={css(styles.albums)}>
+            {state.albums.map((album, index) => (
+              <Album album={album} index={index} />
+            ))}
+          </div>
+        ) : (
+          <Placeholder />
+        )}
+        <p className={css(styles.footer)}>
+          via{' '}
+          <a
+            href="https://www.last.fm/user/johnsylvain"
+            target="_blank"
+            className={css(styles.link)}
+          >
+            last.fm
+          </a>
+        </p>
+      </div>
+    </Page>
+  );
+};

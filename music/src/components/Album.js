@@ -4,7 +4,7 @@ import { StyleSheet, css } from 'aphrodite';
 const fadeUp = {
   from: {
     opacity: 0,
-    transform: 'translateY(10px) scale(0.98)'
+    transform: 'translateY(5px) scale(0.98)'
   },
   to: {
     opacity: 1,
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     marginBottom: 25,
     opacity: 0,
     animationName: fadeUp,
-    animationDuration: '1s',
+    animationDuration: '0.8s',
     animationFillMode: 'forwards',
 
     '@media (max-width: 768px)': {
