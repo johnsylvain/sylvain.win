@@ -30,14 +30,19 @@ const styles = StyleSheet.create({
     height: 100,
     backgroundSize: 'cover',
     cursor: 'pointer',
-    boxShadow: '0px 3px 8px rgba(0, 0, 0, 0.1)'
+    boxShadow: '0px 3px 8px rgba(0, 0, 0, 0.1)',
   },
 
   albumFeatured: {
     display: 'flex',
     alignItems: 'center',
-    width: '100%',
-    animationName: fade
+    gridColumn: '1 / span 6',
+    animationName: fade,
+
+    '@media (max-width: 768px)': {
+      marginBottom: 25,
+      gridColumn: '1 / span 3',
+    }
   },
 
   album: {
@@ -47,22 +52,26 @@ const styles = StyleSheet.create({
     opacity: 0,
     animationName: fadeUp,
     animationDuration: '1s',
-    animationFillMode: 'forwards'
+    animationFillMode: 'forwards',
+
+    '@media (max-width: 768px)': {
+      marginBottom: 15,
+    }
   },
 
   featuredTitle: {
     fontSize: '1.4rem',
     fontWeight: 700,
     display: 'block',
-    marginLeft: 13,
+    marginLeft: 20,
   },
 
   featuredSubtitle: {
     fontSize: '1.2rem',
     display: 'block',
-    marginLeft: 13,
+    marginLeft: 20,
   }
-})
+});
 
 export const Album = ({ album, index }) => {
   const isFeatured = index === 0;

@@ -6,14 +6,20 @@ import { Placeholder } from '../components/Placeholder';
 
 const styles = StyleSheet.create({
   container: {
-    maxWidth: 800,
+    maxWidth: 700,
     margin: '100px auto'
   },
 
   albums: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between'
+    display: 'grid',
+    gridGap: 20,
+    gridTemplateColumns: 'repeat(6, 100px)',
+    gridTemplateRows: 'repeat(2, auto)',
+
+    '@media (max-width: 768px)': {
+      gridTemplateColumns: 'repeat(3, 100px)',
+      gridTemplateRows: 'repeat(3, auto)'
+    }
   },
 
   title: {
@@ -40,7 +46,7 @@ export default (state, dispatch) => (
     hook={{ mount: () => fetchAlbums(dispatch) }}
     className={css(styles.container)}
   >
-    <h1 className={css(styles.title)}>What I've been listenting to this week</h1>
+    <h1 className={css(styles.title)}>What I've been listening to this week</h1>
     {state.albums.length
       ? <div className={css(styles.albums)}>{state.albums.map((album, index) => <Album album={album} index={index} />)}</div>
       : <Placeholder />}
