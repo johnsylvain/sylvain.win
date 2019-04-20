@@ -1,6 +1,7 @@
-import { h, Link } from 'kobra';
+import { h } from 'kobra';
 import { StyleSheet, css } from 'aphrodite';
 import { Page } from '../components/Page';
+import { Redirect } from '../components/Redirect';
 
 const styles = StyleSheet.create({
   title: {
@@ -42,15 +43,7 @@ export default state => {
           />
         </div>
       ) : (
-        <div>
-          <p>Page not found.</p>
-          <p>
-            Go{' '}
-            <Link to="/" className={css(styles.link)}>
-              Home
-            </Link>
-          </p>
-        </div>
+        <Redirect to="/" />
       )}
     </Page>
   );

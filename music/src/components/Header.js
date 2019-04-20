@@ -43,28 +43,22 @@ export const Header = () => (
     <nav className={css(styles.nav)}>
       <Link
         to="/"
-        className={css(
-          styles.link,
-          window.location.pathname === '/' && styles.active
-        )}
+        activeClass={css(styles.active)}
+        className={css(styles.link)}
       >
         Home
       </Link>
       <Link
         to="/sound-cache"
-        className={css(
-          styles.link,
-          window.location.pathname === '/sound-cache' && styles.active
-        )}
+        activeClass={css(styles.active)}
+        className={css(styles.link)}
       >
         Sound Cache
       </Link>
       <Link
         to="/figure-1"
-        className={css(
-          styles.link,
-          window.location.pathname === '/figure-1' && styles.active
-        )}
+        activeClass={css(styles.active)}
+        className={css(styles.link)}
       >
         Figure 1
       </Link>
