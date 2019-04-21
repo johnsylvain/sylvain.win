@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   },
 
   soundcloud: {
-    color: '#f50',
+    color: '#ff5500',
     margin: 0,
     opacity: 0.6,
 

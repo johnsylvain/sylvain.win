@@ -12,13 +12,13 @@ const initialState = {
     'figure-1': {
       slug: 'figure-1',
       name: 'Figure 1',
-      releaseDate: '12-29-2018',
+      releaseDate: '2018-12-29',
       iframeId: '409321373'
     },
     'sound-cache': {
       slug: 'sound-cache',
       name: 'Sound Cache',
-      releaseDate: '01-13-2019',
+      releaseDate: '2019-01-13',
       iframeId: '684972432'
     }
   }
