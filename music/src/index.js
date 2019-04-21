@@ -1,21 +1,25 @@
-import { Kobra } from 'kobra';
+import { Kobra, h } from 'kobra';
 import home from './routes/home';
 import release from './routes/release';
+import discography from './routes/discography';
+import { Redirect } from './components/Redirect';
 
 const app = new Kobra({ router: 'history' });
 
 const initialState = {
   albums: [],
-  releases: {
+  discography: {
     'figure-1': {
+      slug: 'figure-1',
       name: 'Figure 1',
-      iframe:
-        'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/409321373&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true'
+      releaseDate: '12-29-2018',
+      iframeId: '409321373'
     },
     'sound-cache': {
+      slug: 'sound-cache',
       name: 'Sound Cache',
-      iframe:
-        'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/684972432&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true'
+      releaseDate: '01-13-2019',
+      iframeId: '684972432'
     }
   }
 };
@@ -30,6 +34,8 @@ app.use((state = initialState, action) => {
 });
 
 app.route('/', home);
-app.route('/:id', release);
+app.route('/discography', discography);
+app.route('/discography/:id', release);
+app.route('*', () => <Redirect to="/" />);
 
 app.mount(document.querySelector('#app'));

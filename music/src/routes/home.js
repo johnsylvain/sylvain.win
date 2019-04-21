@@ -4,6 +4,18 @@ import { Album } from '../components/Album';
 import { Placeholder } from '../components/Placeholder';
 import { Page } from '../components/Page';
 
+const fadeRight = {
+  from: {
+    opacity: 0,
+    transform: 'translateX(-20px)'
+  },
+
+  to: {
+    opacity: 1,
+    transform: 'translateX(0px)'
+  }
+};
+
 const styles = StyleSheet.create({
   albums: {
     display: 'grid',
@@ -27,7 +39,12 @@ const styles = StyleSheet.create({
   footer: {
     fontSize: '0.8rem',
     textAlign: 'right',
-    display: 'block'
+    display: 'block',
+    opacity: 0,
+    animationName: fadeRight,
+    animationFillMode: 'forwards',
+    animationDuration: '0.8s',
+    animationDelay: '500ms'
   },
 
   link: {
@@ -64,25 +81,26 @@ export default (state, dispatch) => {
         </h2>
 
         {state.albums.length ? (
-          <div className={css(styles.albums)}>
-            {state.albums.map((album, index) => (
-              <Album album={album} index={index} />
-            ))}
+          <div>
+            <div className={css(styles.albums)}>
+              {state.albums.map((album, index) => (
+                <Album album={album} index={index} />
+              ))}
+            </div>
+            <p className={css(styles.footer)}>
+              via{' '}
+              <a
+                href="https://www.last.fm/user/johnsylvain"
+                target="_blank"
+                className={css(styles.link)}
+              >
+                last.fm
+              </a>
+            </p>
           </div>
         ) : (
           <Placeholder />
         )}
-
-        <p className={css(styles.footer)}>
-          via{' '}
-          <a
-            href="https://www.last.fm/user/johnsylvain"
-            target="_blank"
-            className={css(styles.link)}
-          >
-            last.fm
-          </a>
-        </p>
       </div>
     </Page>
   );

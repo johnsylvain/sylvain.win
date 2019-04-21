@@ -16,10 +16,10 @@ const styles = StyleSheet.create({
     marginRight: 15,
     cursor: 'pointer',
     fontSize: '0.85rem',
-    opacity: 0.5,
+    opacity: 0.6,
 
     ':hover': {
-      opacity: 0.65
+      opacity: 0.75
     }
   },
 
@@ -49,18 +49,11 @@ export const Header = () => (
         Home
       </Link>
       <Link
-        to="/sound-cache"
+        to="/discography"
         activeClass={css(styles.active)}
         className={css(styles.link)}
       >
-        Sound Cache
-      </Link>
-      <Link
-        to="/figure-1"
-        activeClass={css(styles.active)}
-        className={css(styles.link)}
-      >
-        Figure 1
+        Discography
       </Link>
     </nav>
     <a
@@ -68,7 +61,7 @@ export const Header = () => (
       target="_blank"
       className={css(styles.link, styles.soundcloud)}
     >
-      Sound Cloud
+      SoundCloud
     </a>
   </header>
 );

@@ -2822,11 +2822,11 @@ kind-of@^6.0.0, kind-of@^6.0.2:
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.2.tgz#01146b36a6218e64e58f3a8d66de5d7fc6f6d051"
 
-kobra@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/kobra/-/kobra-0.1.1.tgz#19db7d8d568c3c067af38d024c4993865609453b"
+kobra@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/kobra/-/kobra-0.2.1.tgz#4c4f2999a6d6d7c71fd553ad9b8f49d832accd44"
   dependencies:
-    matchit "^1.0.5"
+    matchit "^1.0.7"
 
 lcid@^2.0.0:
   version "2.0.0"
@@ -2924,7 +2924,7 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-matchit@^1.0.5:
+matchit@^1.0.7:
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/matchit/-/matchit-1.0.8.tgz#9a129e38f79b2053dd75339215b19e1f6bb88efb"
   dependencies:

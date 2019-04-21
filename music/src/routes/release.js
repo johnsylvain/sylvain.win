@@ -23,23 +23,22 @@ const styles = StyleSheet.create({
 });
 
 export default state => {
-  document.title = !!state.releases[state.params.id]
-    ? `${state.releases[state.params.id].name} - John Sylvain`
-    : 'Page not found';
+  const release = state.discography[state.params.id];
+  document.title = `${(release || {}).name} - John Sylvain`;
 
   return (
     <Page>
-      {!!state.releases[state.params.id] ? (
+      {!!release ? (
         <div>
-          <h1 className={css(styles.title)}>
-            {state.releases[state.params.id].name}
-          </h1>
+          <h1 className={css(styles.title)}>{release.name}</h1>
           <iframe
             className={css(styles.iframe)}
             scrolling="no"
             frameborder="no"
             allow="autoplay"
-            src={state.releases[state.params.id].iframe}
+            src={`https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/${
+              release.iframeId
+            }&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true`}
           />
         </div>
       ) : (
