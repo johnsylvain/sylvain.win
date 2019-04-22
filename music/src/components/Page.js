@@ -5,7 +5,11 @@ import { Header } from './Header';
 const styles = StyleSheet.create({
   container: {
     maxWidth: 700,
-    margin: '100px auto'
+    margin: '100px auto',
+
+    '@media (max-width: 768px)': {
+      margin: '20px auto'
+    }
   }
 });
 
