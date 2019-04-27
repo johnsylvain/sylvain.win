@@ -4,8 +4,13 @@ import { StyleSheet, css } from 'aphrodite';
 const styles = StyleSheet.create({
   header: {
     marginBottom: 40,
+    paddingTop: 100,
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
+
+    '@media (max-width: 768px)': {
+      paddingTop: 40
+    }
   },
 
   nav: {
