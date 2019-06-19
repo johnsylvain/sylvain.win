@@ -1,6 +1,8 @@
 import { h } from 'kobra';
 import { StyleSheet, css } from 'aphrodite';
 
+import placeholder from '../assets/placeholder.svg';
+
 const fadeUp = {
   from: {
     opacity: 0,
@@ -85,7 +87,7 @@ export const Album = ({ album, index }) => {
         href={album.url}
         target="_blank"
         className={css(styles.image, isFeatured && styles.imageFeatured)}
-        style={`background: url(${album.image})`}
+        style={`background: url(${album.image}), url(${placeholder})`}
       />
       {isFeatured && (
         <div>
