@@ -15,12 +15,18 @@ const initialState = {
       releaseDate: '2018-12-29',
       iframeId: '409321373'
     },
+    'exit-strategy': {
+      slug: 'exit-strategy',
+      name: 'Exit Strategy',
+      releaseDate: '2019-10-04',
+      iframeId: '885896302'
+    },
     'sound-cache': {
       slug: 'sound-cache',
       name: 'Sound Cache',
       releaseDate: '2019-01-13',
       iframeId: '684972432'
-    }
+    },
   }
 };
 
