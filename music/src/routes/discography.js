@@ -1,6 +1,7 @@
 import { h, Link } from 'kobra';
 import { StyleSheet, css } from 'aphrodite';
 import { Page } from '../components/Page';
+import { dateFormatter, dateFormats } from '../util/date-formatter';
 
 const styles = StyleSheet.create({
   title: {
@@ -15,16 +16,27 @@ const styles = StyleSheet.create({
   },
 
   link: {
-    cursor: 'pointer'
+    cursor: 'pointer',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center'
   },
 
   discographyItem: {
     marginLeft: 20,
+    marginBottom: 10,
     opacity: 0.7,
 
     ':hover': {
       opacity: 1
     }
+  },
+
+  releaseDate: {
+    fontSize: '0.8rem',
+    background: 'rgba(0, 0, 0, 0.05)',
+    borderRadius: 2,
+    padding: '3px 5px'
   }
 });
 
@@ -56,7 +68,12 @@ export default state => {
                 to={`/discography/${item.slug}`}
                 className={css(styles.link)}
               >
-                {item.name}
+                <span>
+                  {item.name}
+                </span>
+                <span className={css(styles.releaseDate)}>
+                  {dateFormatter.format(item.releaseDate, dateFormats.MEDIUM)}
+                </span>
               </Link>
             </div>
           ))}
