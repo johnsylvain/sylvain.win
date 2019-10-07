@@ -3,40 +3,51 @@ import home from './routes/home';
 import release from './routes/release';
 import discography from './routes/discography';
 import { Redirect } from './components/Redirect';
+import { soundCloudService } from './services/soundcloud.service';
+import { lastFMService } from './services/lastfm.service';
 
 const app = new Kobra({ router: 'history' });
 
 const initialState = {
   albums: [],
-  discography: {
-    'figure-1': {
-      slug: 'figure-1',
-      name: 'Figure 1',
-      releaseDate: '2018-12-29',
-      iframeId: '409321373'
-    },
-    'exit-strategy': {
-      slug: 'exit-strategy',
-      name: 'Exit Strategy',
-      releaseDate: '2019-10-04',
-      iframeId: '885896302'
-    },
-    'sound-cache': {
-      slug: 'sound-cache',
-      name: 'Sound Cache',
-      releaseDate: '2019-01-13',
-      iframeId: '684972432'
-    },
-  }
+  discography: {},
+  loading: true
 };
 
 app.use((state = initialState, action) => {
   switch (action.type) {
     case 'SET_ALBUMS':
       return { ...state, albums: [...state.albums, ...action.payload] };
+    case 'SET_DISCOGRAPHY':
+      return { ...state, discography: action.payload, loading: false };
     default:
       return state;
   }
+});
+
+app.run(dispatch => {
+  Promise.all([
+    soundCloudService.getAlbums(),
+    lastFMService.getActivity()
+  ]).then(([discography, albums]) => {
+    const parsedDiscography = discography.reduce(
+      (accumulator, current) => ({
+        ...accumulator,
+        [current.permalink]: current
+      }),
+      {}
+    );
+
+    dispatch({
+      type: 'SET_DISCOGRAPHY',
+      payload: parsedDiscography
+    });
+
+    dispatch({
+      type: 'SET_ALBUMS',
+      payload: albums
+    });
+  });
 });
 
 app.route('/', home);

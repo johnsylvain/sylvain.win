@@ -44,7 +44,7 @@ function sortDiscography(obj) {
   const result = {};
 
   for (let key in obj) {
-    const date = new Date(obj[key].releaseDate);
+    const date = new Date(obj[key].created_at);
     result[date.getFullYear()] = result[date.getFullYear()] || [];
     result[date.getFullYear()].push(obj[key]);
   }
@@ -65,14 +65,12 @@ export default state => {
           {items.map(item => (
             <div className={css(styles.discographyItem)}>
               <Link
-                to={`/discography/${item.slug}`}
+                to={`/discography/${item.permalink}`}
                 className={css(styles.link)}
               >
-                <span>
-                  {item.name}
-                </span>
+                <span>{item.title}</span>
                 <span className={css(styles.releaseDate)}>
-                  {dateFormatter.format(item.releaseDate, dateFormats.MEDIUM)}
+                  {dateFormatter.format(item.created_at, dateFormats.MEDIUM)}
                 </span>
               </Link>
             </div>
