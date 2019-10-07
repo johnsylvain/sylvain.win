@@ -27,7 +27,7 @@ const fade = {
 
 const styles = StyleSheet.create({
   image: {
-    borderRadius: '4px',
+    borderRadius: 8,
     width: 100,
     height: 100,
     backgroundSize: 'cover',
