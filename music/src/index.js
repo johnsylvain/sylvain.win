@@ -3,10 +3,10 @@ import home from './routes/home';
 import release from './routes/release';
 import discography from './routes/discography';
 import { Redirect } from './components/Redirect';
-import { soundCloudService } from './services/soundcloud.service';
-import { lastFMService } from './services/lastfm.service';
+import ApolloClient, { gql } from 'apollo-boost';
 
 const app = new Kobra({ router: 'history' });
+const client = new ApolloClient({ uri: 'https://api.sylvain.win' });
 
 const initialState = {
   albums: [],
@@ -25,28 +25,47 @@ app.use((state = initialState, action) => {
   }
 });
 
-app.run(dispatch => {
-  Promise.all([
-    soundCloudService.getAlbums(),
-    lastFMService.getActivity()
-  ]).then(([discography, albums]) => {
-    const parsedDiscography = discography.reduce(
-      (accumulator, current) => ({
-        ...accumulator,
-        [current.permalink]: current
-      }),
-      {}
-    );
+app.run(async dispatch => {
+  const response = await client.query({
+    query: gql`
+      query {
+        discography {
+          title
+          permalink
+          type
+          track_count
+          release_year
+          id
+          duration
+          created_at
+        }
+        activity {
+          music {
+            artist
+            album
+            image
+            url
+          }
+        }
+      }
+    `
+  });
+  const parsedDiscography = response.data.discography.reduce(
+    (accumulator, current) => ({
+      ...accumulator,
+      [current.permalink]: current
+    }),
+    {}
+  );
 
-    dispatch({
-      type: 'SET_DISCOGRAPHY',
-      payload: parsedDiscography
-    });
+  dispatch({
+    type: 'SET_DISCOGRAPHY',
+    payload: parsedDiscography
+  });
 
-    dispatch({
-      type: 'SET_ALBUMS',
-      payload: albums
-    });
+  dispatch({
+    type: 'SET_ALBUMS',
+    payload: response.data.activity.music
   });
 });
 
