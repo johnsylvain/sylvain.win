@@ -18,9 +18,9 @@ const styles = StyleSheet.create({
   }
 });
 
-export const Page = (_, children) => (
+export const Page = (props, children) => (
   <div className={css(styles.container)}>
-    <Header />
+    <Header soundcloudUrl={props.soundcloudUrl} />
     <main className={css(styles.main)}>{children}</main>
     <Footer />
   </div>

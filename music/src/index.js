@@ -1,9 +1,9 @@
 import { Kobra, h } from 'kobra';
+import ApolloClient, { gql } from 'apollo-boost';
 import home from './routes/home';
 import release from './routes/release';
 import discography from './routes/discography';
 import { Redirect } from './components/Redirect';
-import ApolloClient, { gql } from 'apollo-boost';
 
 const app = new Kobra({ router: 'history' });
 const client = new ApolloClient({ uri: 'https://api.sylvain.win' });
@@ -11,11 +11,14 @@ const client = new ApolloClient({ uri: 'https://api.sylvain.win' });
 const initialState = {
   albums: [],
   discography: {},
-  loading: true
+  loading: true,
+  soundcloudUrl: ''
 };
 
 app.use((state = initialState, action) => {
   switch (action.type) {
+    case 'SET_SOUNDCLOUD':
+      return { ...state, soundcloudUrl: action.payload };
     case 'SET_ALBUMS':
       return { ...state, albums: [...state.albums, ...action.payload] };
     case 'SET_DISCOGRAPHY':
@@ -29,6 +32,11 @@ app.run(async dispatch => {
   const response = await client.query({
     query: gql`
       query {
+        resume {
+          profiles {
+            soundcloud
+          }
+        }
         discography {
           title
           permalink
@@ -57,6 +65,11 @@ app.run(async dispatch => {
     }),
     {}
   );
+
+  dispatch({
+    type: 'SET_SOUNDCLOUD',
+    payload: response.data.resume.profiles.soundcloud
+  });
 
   dispatch({
     type: 'SET_DISCOGRAPHY',
