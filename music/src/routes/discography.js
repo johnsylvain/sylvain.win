@@ -58,7 +58,7 @@ export default state => {
   document.title = 'Discography - John Sylvain';
 
   return (
-    <Page>
+    <Page soundcloudUrl={state.soundcloudUrl}>
       {sortDiscography(state.discography).map(([year, items]) => (
         <section className={css(styles.section)}>
           <h2 className={css(styles.title)}>{year}</h2>

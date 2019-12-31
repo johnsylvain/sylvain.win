@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   }
 });
 
-export const Header = () => (
+export const Header = ({ soundcloudUrl }) => (
   <header className={css(styles.header)}>
     <nav className={css(styles.nav)}>
       <Link
@@ -61,12 +61,14 @@ export const Header = () => (
         Discography
       </Link>
     </nav>
-    <a
-      href="https://soundcloud.com/johnsylvain"
-      target="_blank"
-      className={css(styles.link, styles.soundcloud)}
-    >
-      SoundCloud
-    </a>
+    {soundcloudUrl ? (
+      <a
+        href={soundcloudUrl}
+        target="_blank"
+        className={css(styles.link, styles.soundcloud)}
+      >
+        SoundCloud
+      </a>
+    ) : null}
   </header>
 );
