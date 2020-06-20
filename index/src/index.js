@@ -1,7 +1,7 @@
-import { h, Kobra } from "kobra";
+import { h, kobra } from "kobra";
 import style from "./styles/style.scss";
 
-const app = new Kobra();
+const app = kobra();
 
 const initialState = {
   sites: [
@@ -23,7 +23,7 @@ const initialState = {
   ]
 };
 
-app.use((state = initialState) => state);
+app.store({}, initialState);
 
 app.route("/", state => (
   <div className={style.container}>

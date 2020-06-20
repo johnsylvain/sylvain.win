@@ -1,11 +1,11 @@
-import { Kobra, h } from 'kobra';
+import { kobra, h } from 'kobra';
 import ApolloClient, { gql } from 'apollo-boost';
 import home from './routes/home';
 import release from './routes/release';
 import discography from './routes/discography';
 import { Redirect } from './components/Redirect';
 
-const app = new Kobra({ router: 'history' });
+const app = kobra();
 const client = new ApolloClient({ uri: 'https://api.sylvain.win' });
 
 const initialState = {
@@ -15,73 +15,64 @@ const initialState = {
   soundcloudUrl: ''
 };
 
-app.use((state = initialState, action) => {
-  switch (action.type) {
-    case 'SET_SOUNDCLOUD':
-      return { ...state, soundcloudUrl: action.payload };
-    case 'SET_ALBUMS':
-      return { ...state, albums: [...state.albums, ...action.payload] };
-    case 'SET_DISCOGRAPHY':
-      return { ...state, discography: action.payload, loading: false };
-    default:
-      return state;
+const actions = {
+  setData: data => ({
+    soundcloudUrl: data.soundcloudUrl,
+    albums: data.albums,
+    discography: data.discography,
+    loading: false
+  }),
+  getData: () => async (state, actions) => {
+    const response = await client.query({
+      query: gql`
+        query {
+          resume {
+            profiles {
+              soundcloud
+            }
+          }
+          discography {
+            title
+            permalink
+            type
+            track_count
+            release_year
+            id
+            duration
+            created_at
+          }
+          activity {
+            music {
+              artist
+              album
+              image
+              url
+            }
+          }
+        }
+      `
+    });
+
+    const parsedDiscography = response.data.discography.reduce(
+      (accumulator, current) => ({
+        ...accumulator,
+        [current.permalink]: current
+      }),
+      {}
+    );
+
+    actions.setData({
+      soundcloudUrl: response.data.resume.profiles.soundcloud,
+      albums: response.data.activity.music,
+      discography: parsedDiscography
+    });
   }
+};
+
+app.store(actions, initialState);
+app.on('load', (state, actions) => {
+  actions.getData();
 });
-
-app.run(async dispatch => {
-  const response = await client.query({
-    query: gql`
-      query {
-        resume {
-          profiles {
-            soundcloud
-          }
-        }
-        discography {
-          title
-          permalink
-          type
-          track_count
-          release_year
-          id
-          duration
-          created_at
-        }
-        activity {
-          music {
-            artist
-            album
-            image
-            url
-          }
-        }
-      }
-    `
-  });
-  const parsedDiscography = response.data.discography.reduce(
-    (accumulator, current) => ({
-      ...accumulator,
-      [current.permalink]: current
-    }),
-    {}
-  );
-
-  dispatch({
-    type: 'SET_SOUNDCLOUD',
-    payload: response.data.resume.profiles.soundcloud
-  });
-
-  dispatch({
-    type: 'SET_DISCOGRAPHY',
-    payload: parsedDiscography
-  });
-
-  dispatch({
-    type: 'SET_ALBUMS',
-    payload: response.data.activity.music
-  });
-});
-
 app.route('/', home);
 app.route('/discography', discography);
 app.route('/discography/:id', release);
