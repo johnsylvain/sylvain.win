@@ -57,7 +57,7 @@ export default state => {
   document.title = 'Home - John Sylvain';
 
   return (
-    <Page soundcloudUrl={state.soundcloudUrl}>
+    <Page soundcloudUrl={state.soundcloudUrl} spotifyUrl={state.spotifyUrl}>
       <h2 className={css(styles.title)}>
         What I've been listening to this week
       </h2>

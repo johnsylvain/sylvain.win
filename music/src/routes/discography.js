@@ -1,4 +1,4 @@
-import { h, Link } from 'kobra';
+import { h } from 'kobra';
 import { StyleSheet, css } from 'aphrodite';
 import { Page } from '../components/Page';
 import { dateFormatter, dateFormats } from '../util/date-formatter';
@@ -64,15 +64,15 @@ export default state => {
           <h2 className={css(styles.title)}>{year}</h2>
           {items.map(item => (
             <div className={css(styles.discographyItem)}>
-              <Link
-                to={`/discography/${item.permalink}`}
+              <a
+                href={`/discography/${item.permalink}`}
                 className={css(styles.link)}
               >
                 <span>{item.title}</span>
                 <span className={css(styles.releaseDate)}>
                   {dateFormatter.format(item.created_at, dateFormats.MEDIUM)}
                 </span>
-              </Link>
+              </a>
             </div>
           ))}
         </section>
