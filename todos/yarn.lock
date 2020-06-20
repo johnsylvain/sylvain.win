@@ -2643,11 +2643,13 @@ kind-of@^6.0.0, kind-of@^6.0.2:
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.2.tgz#01146b36a6218e64e58f3a8d66de5d7fc6f6d051"
 
-kobra@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/kobra/-/kobra-0.1.1.tgz#19db7d8d568c3c067af38d024c4993865609453b"
+kobra@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/kobra/-/kobra-0.3.1.tgz#fd52ed1d4d51ca27c6e3aa5462ca9bc8ceebc3ad"
+  integrity sha512-vqNK1c9qHB3DtmqidZP2LMmXt6NonEb9WFSQEiTs0D7wuuNX3fSnZ+/B6FZfx+dMaJPFFey9fEqN4+NtQB0VRw==
   dependencies:
-    matchit "^1.0.5"
+    matchit "^1.0.7"
+    staten "^0.1.0"
 
 levn@^0.3.0, levn@~0.3.0:
   version "0.3.0"
@@ -2724,9 +2726,10 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-matchit@^1.0.5:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/matchit/-/matchit-1.0.6.tgz#825da06468bd324f0219ebe28e12a41bfb5524c4"
+matchit@^1.0.7:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/matchit/-/matchit-1.0.8.tgz#9a129e38f79b2053dd75339215b19e1f6bb88efb"
+  integrity sha512-CwPPICzozd/ezCzpVwGYG5bMVieaapnA0vvHDQnmQ2u2vZtVLynoPmvFsZjL67hFOvTBhhpqSR0bq3uloDP/Rw==
   dependencies:
     "@arr/every" "^1.0.0"
 
@@ -4307,6 +4310,11 @@ sprintf-js@~1.0.2:
 stable@~0.1.6:
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/stable/-/stable-0.1.8.tgz#836eb3c8382fe2936feaf544631017ce7d47a3cf"
+
+staten@^0.1.0:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/staten/-/staten-0.1.1.tgz#3f7ac008ee2a045c074b3122e83146ed1c38cf5a"
+  integrity sha512-xgbZZDET+hIkPx3NGn0qdYE3AMYzR91cPTyrqbrVCxQJpdHf7YRh1jIkVqBzZiek5yRYmRjABcCtOzBlqNpgrA==
 
 static-eval@^2.0.0:
   version "2.0.0"
