@@ -1,4 +1,4 @@
-import { h, Link } from 'kobra';
+import { h } from 'kobra';
 import { StyleSheet, css } from 'aphrodite';
 
 const styles = StyleSheet.create({
@@ -28,6 +28,17 @@ const styles = StyleSheet.create({
     }
   },
 
+  spotify: {
+    color: '#1ED760',
+    margin: 0,
+    opacity: 0.6,
+    marginLeft: 10,
+
+    ':hover': {
+      opacity: 0.8
+    }
+  },
+
   soundcloud: {
     color: '#ff5500',
     margin: 0,
@@ -43,23 +54,27 @@ const styles = StyleSheet.create({
   }
 });
 
-export const Header = ({ soundcloudUrl }) => (
+export const Header = ({ soundcloudUrl, spotifyUrl }) => (
   <header className={css(styles.header)}>
     <nav className={css(styles.nav)}>
-      <Link
-        to="/"
-        activeClass={css(styles.active)}
-        className={css(styles.link)}
+      <a
+        href="/"
+        className={css(
+          styles.link,
+          window.location.pathname === '/' && styles.active
+        )}
       >
         Home
-      </Link>
-      <Link
-        to="/discography"
-        activeClass={css(styles.active)}
-        className={css(styles.link)}
+      </a>
+      <a
+        href="/discography"
+        className={css(
+          styles.link,
+          window.location.pathname === '/discography' && styles.active
+        )}
       >
         Discography
-      </Link>
+      </a>
     </nav>
     {soundcloudUrl ? (
       <a
@@ -68,6 +83,15 @@ export const Header = ({ soundcloudUrl }) => (
         className={css(styles.link, styles.soundcloud)}
       >
         SoundCloud
+      </a>
+    ) : null}
+    {spotifyUrl ? (
+      <a
+        href={spotifyUrl}
+        target="_blank"
+        className={css(styles.link, styles.spotify)}
+      >
+        Spotify
       </a>
     ) : null}
   </header>

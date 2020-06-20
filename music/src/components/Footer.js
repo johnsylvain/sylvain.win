@@ -1,4 +1,4 @@
-import { h, Link } from 'kobra';
+import { h } from 'kobra';
 import { StyleSheet, css } from 'aphrodite';
 
 const styles = StyleSheet.create({

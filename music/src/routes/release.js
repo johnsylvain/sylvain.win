@@ -48,7 +48,7 @@ export default state => {
     return null;
   } else {
     return (
-      <Page soundcloudUrl={state.soundcloudUrl}>
+      <Page soundcloudUrl={state.soundcloudUrl} spotifyUrl={state.spotifyUrl}>
         {!state.loading ? (
           <div>
             <div className={css(styles.releaseHeader)}>

@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
 
 export const Page = (props, children) => (
   <div className={css(styles.container)}>
-    <Header soundcloudUrl={props.soundcloudUrl} />
+    <Header soundcloudUrl={props.soundcloudUrl} spotifyUrl={props.spotifyUrl} />
     <main className={css(styles.main)}>{children}</main>
     <Footer />
   </div>

@@ -3386,10 +3386,10 @@ kind-of@^6.0.0, kind-of@^6.0.2:
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.2.tgz#01146b36a6218e64e58f3a8d66de5d7fc6f6d051"
 
-kobra@^0.3.2:
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/kobra/-/kobra-0.3.2.tgz#63a32262d192e35ad3c04a72fe1ef1d0bca43cc7"
-  integrity sha512-ij86thKFEtCnWNw7hFCXosBUtKKYjFJqIeu0XFS86fLU0vE0XtLDtqtWwtsbT8qxK9wiE9JiXXn4iZHs/7BNgw==
+kobra@^0.3.4:
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/kobra/-/kobra-0.3.4.tgz#83b503e9603d5854eaa2cac89fb1b59f666dfb00"
+  integrity sha512-Ue6rtRkPD7JE4F+0HqPOJ34e8a26tozfrrG6bcWALfr4sWps4CVgE9KleSjTeTxzgmYpkYv98XbufEZxlaPr/Q==
   dependencies:
     matchit "^1.0.7"
     staten "^0.1.0"

@@ -18,6 +18,7 @@ const initialState = {
 const actions = {
   setData: data => ({
     soundcloudUrl: data.soundcloudUrl,
+    spotifyUrl: data.spotifyUrl,
     albums: data.albums,
     discography: data.discography,
     loading: false
@@ -29,6 +30,7 @@ const actions = {
           resume {
             profiles {
               soundcloud
+              spotify
             }
           }
           discography {
@@ -63,6 +65,7 @@ const actions = {
 
     actions.setData({
       soundcloudUrl: response.data.resume.profiles.soundcloud,
+      spotifyUrl: response.data.resume.profiles.spotify,
       albums: response.data.activity.music,
       discography: parsedDiscography
     });
