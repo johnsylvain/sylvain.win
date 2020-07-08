@@ -59,24 +59,26 @@ export default state => {
 
   return (
     <Page soundcloudUrl={state.soundcloudUrl} spotifyUrl={state.spotifyUrl}>
-      {sortDiscography(state.discography).map(([year, items]) => (
-        <section className={css(styles.section)}>
-          <h2 className={css(styles.title)}>{year}</h2>
-          {items.map(item => (
-            <div className={css(styles.discographyItem)}>
-              <a
-                href={`/discography/${item.permalink}`}
-                className={css(styles.link)}
-              >
-                <span>{item.title}</span>
-                <span className={css(styles.releaseDate)}>
-                  {dateFormatter.format(item.created_at, dateFormats.MEDIUM)}
-                </span>
-              </a>
-            </div>
-          ))}
-        </section>
-      ))}
+      <div>
+        {sortDiscography(state.discography).map(([year, items]) => (
+          <section className={css(styles.section)}>
+            <h2 className={css(styles.title)}>{year}</h2>
+            {items.map(item => (
+              <div className={css(styles.discographyItem)}>
+                <a
+                  href={`/discography/${item.permalink}`}
+                  className={css(styles.link)}
+                >
+                  <span>{item.title}</span>
+                  <span className={css(styles.releaseDate)}>
+                    {dateFormatter.format(item.created_at, dateFormats.MEDIUM)}
+                  </span>
+                </a>
+              </div>
+            ))}
+          </section>
+        ))}
+      </div>
     </Page>
   );
 };
