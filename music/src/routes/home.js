@@ -1,5 +1,5 @@
 import { h } from 'kobra';
-import { StyleSheet, css } from 'aphrodite';
+import { StyleSheet, css } from 'aphrodite/no-important';
 import { Album } from '../components/Album';
 import { Placeholder } from '../components/Placeholder';
 import { Page } from '../components/Page';

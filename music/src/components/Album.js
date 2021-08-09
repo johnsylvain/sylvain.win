@@ -1,27 +1,29 @@
 import { h } from 'kobra';
-import { StyleSheet, css } from 'aphrodite';
+import { StyleSheet, css } from 'aphrodite/no-important';
 
 import placeholder from '../assets/placeholder.svg';
 
 const fadeUp = {
-  from: {
+  '0%': {
     opacity: 0,
     transform: 'translateY(5px) scale(0.98)'
   },
-  to: {
+  '100%': {
     opacity: 1,
-    transform: 'translateY(0px) scale(1)'
+    transform: 'translateY(0px) scale(1)',
+    animationFillMode: 'forwards'
   }
 };
 
 const fade = {
-  from: {
+  '0%': {
     opacity: 0,
     transform: 'none'
   },
-  to: {
+  '100%': {
     opacity: 1,
-    transform: 'none'
+    transform: 'none',
+    animationFillMode: 'forwards'
   }
 };
 
@@ -87,7 +89,7 @@ export const Album = ({ album, index }) => {
         href={album.url}
         target="_blank"
         className={css(styles.image, isFeatured && styles.imageFeatured)}
-        style={`background: url(${album.image}), url(${placeholder})`}
+        style={`background-image: url(${album.image}), url(${placeholder})`}
       />
       {isFeatured && (
         <div>

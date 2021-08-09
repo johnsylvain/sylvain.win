@@ -61,7 +61,7 @@ export default state => {
     <Page soundcloudUrl={state.soundcloudUrl} spotifyUrl={state.spotifyUrl}>
       <div>
         {sortDiscography(state.discography).map(([year, items]) => (
-          <section className={css(styles.section)}>
+          <section className={css(styles.section)} key={year}>
             <h2 className={css(styles.title)}>{year}</h2>
             {items.map(item => (
               <div className={css(styles.discographyItem)}>
